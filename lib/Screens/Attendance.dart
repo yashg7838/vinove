@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class attendance extends StatefulWidget {
   const attendance({Key? key}) : super(key: key);
@@ -10,6 +12,59 @@ class attendance extends StatefulWidget {
 class _attendanceState extends State<attendance> {
   @override
   Widget build(BuildContext context) {
+    final employee = [
+      {
+        "empID" : "WSL0003",
+        "empName" : "Wade Warren",
+        "inTime" : "9:30 am",
+        "outTime" : "",
+        "profileImage" : "",
+      },
+      {
+        "empID" : "WSL0034",
+        "empName" : "Esther Howard",
+        "inTime" : "9:30 am",
+        "outTime" : "06:40 pm",
+        "profileImage" : "",
+      },
+      {
+        "empID" : "WSL0054",
+        "empName" : "Cameron William",
+        "inTime" : "",
+        "outTime" : "",
+        "profileImage" : "",
+      },
+      {
+        "empID" : "WSL0076",
+        "empName" : "Brooklyn Simon",
+        "inTime" : "9:30 am",
+        "outTime" : "06:40 pm",
+        "profileImage" : "",
+      },
+      {
+        "empID" : "WSL0065",
+        "empName" : "Savannah Nguyen",
+        "inTime" : "9:30 am",
+        "outTime" : "06:40 pm",
+        "profileImage" : "",
+      },
+      {
+        "empID" : "WSL0069",
+        "empName" : "Leslie Alexander",
+        "inTime" : "9:30 am",
+        "outTime" : "06:40 pm",
+        "profileImage" : "",
+      },
+      {
+        "empID" : "WSL0095",
+        "empName" : "Kathryn Murphy",
+        "inTime" : "9:30 am",
+        "outTime" : "06:40 pm",
+        "profileImage" : "",
+      }
+    ];
+    final now = DateTime.now();
+    final formattedDate = DateFormat('EEE, MMM d y').format(now);
     double width = MediaQuery.of(context).size.width;
     return Placeholder(
       child: Scaffold(
@@ -371,13 +426,183 @@ class _attendanceState extends State<attendance> {
             ],
           ),
         ),
-        body: const SafeArea(
+        body: SafeArea(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: Text(
-                      "Attendance"
+                Container(
+                  color: Color(0xFFeaf0f6),
+                  height: 50,
+                  width: width,
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 15.0),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Color(0xFFc9c5ff),
+                              child: Icon(CupertinoIcons.group, color: Colors.white,),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 8.0),
+                              child: Text(
+                                "All Members",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: 15.0),
+                        child: Text(
+                          "Change",
+                          style: TextStyle(
+                            color: Color(0xFF8983f0),
+                            fontSize: 15,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: width,
+                  height: 60,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Icon(CupertinoIcons.left_chevron, color: Color(0xFF857cf1),),
+                      Text(formattedDate),
+                      const Icon(CupertinoIcons.right_chevron, color: Color(0xFFc3c3c3),),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 15.0),
+                        child: Icon(Icons.calendar_today_rounded),
+                      )
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ListView.separated(
+                    scrollDirection: Axis.vertical,
+                    itemCount: employee.length,
+                      itemBuilder: (context, index){
+                        return ListTile(
+                          title: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: Colors.green,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text(
+                                  "${employee[index]["empName"]} (${employee[index]["empID"]})",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          subtitle: employee[index]["inTime"] == ""?
+                          Padding(
+                            padding: const EdgeInsets.only(top: 4.0, right: 180),
+                            child: Container(
+                              width: 100,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFe7e7ec),
+                                borderRadius: BorderRadius.circular(4)
+                              ),
+                              child: const Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(2.0),
+                                  child: Text(
+                                    "NOT LOGGED-IN YET"
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ):
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(CupertinoIcons.arrow_up_right, color: Colors.green,),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(employee[index]["inTime"]!)
+                                ],
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              employee[index]["outTime"] == "" ?
+                                  Row(
+                                    children: [
+                                      Icon(Icons.error, color: Colors.yellow,),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(4),
+                                          color: Color(0xFFe1fcd1),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(left: 7.0, right: 7.0, top: 3.0, bottom: 3.0),
+                                          child: Text(
+                                            "Working",
+                                            style: TextStyle(
+                                              color: Color(0xFF27aa34)
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ):
+                                  Row(
+                                    children: [
+                                      Icon(CupertinoIcons.arrow_down_left, color: Colors.red,),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(employee[index]["outTime"]!)
+                                    ],
+                                  )
+                            ],
+                          ),
+                          trailing: employee[index]["inTime"] == ""?
+                          SizedBox():
+                          Container(
+                            width: 60,
+                            child: Row(
+                              children: [
+                                InkWell(child: Icon(CupertinoIcons.calendar)),
+                                SizedBox(
+                                  width: 12,
+                                ),
+                                InkWell(child: Icon(Icons.my_location_rounded, color: Color(0xFF624de3),))
+                                // IconButton(onPressed: (){}, icon: Icon(CupertinoIcons.calendar)),
+                                // IconButton(onPressed: (){}, icon: Icon(Icons.my_location_rounded, color: Color(0xFF624de3),))
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const Padding(
+                        padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey,
+                        ),
+                      );
+                    },
                   ),
                 )
               ],
