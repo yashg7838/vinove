@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="vinove"
         android:name="${applicationName}"
@@ -19,6 +20,7 @@
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
+              android:value="pk.eyJ1IjoieWFzaGd1cHRhMjFjc2UiLCJhIjoiY201bjM0ZGE0MDZudDJrc2N0NTl3MDVvaSJ9.hJBSCB0OL83JFj_3SYa7nQ" />
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,6 +33,10 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET"
+        tools:ignore="ManifestOrder" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
          https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
