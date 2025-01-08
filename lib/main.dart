@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
-  static const String mapboxAccessToken = 'pk.eyJ1IjoieWFzaGd1cHRhMjFjc2UiLCJhIjoiY201bjM0ZGE0MDZudDJrc2N0NTl3MDVvaSJ9.hJBSCB0OL83JFj_3SYa7nQ';
+  static const String mapboxAccessToken = 'sk.eyJ1IjoieWFzaGd1cHRhMjFjc2UiLCJhIjoiY201bmk5ZjVpMGJkMjJtczl6M2ZrcjI5NyJ9.Wv9lJF3oweFZuCzhCdz2rg';
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',

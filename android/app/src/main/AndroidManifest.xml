@@ -20,7 +20,7 @@
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
-              android:value="pk.eyJ1IjoieWFzaGd1cHRhMjFjc2UiLCJhIjoiY201bjM0ZGE0MDZudDJrc2N0NTl3MDVvaSJ9.hJBSCB0OL83JFj_3SYa7nQ" />
+              android:value="sk.eyJ1IjoieWFzaGd1cHRhMjFjc2UiLCJhIjoiY201bmk5ZjVpMGJkMjJtczl6M2ZrcjI5NyJ9.Wv9lJF3oweFZuCzhCdz2rg" />
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

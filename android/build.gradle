@@ -16,3 +16,7 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    mapboxSdkToken = "sk.eyJ1IjoieWFzaGd1cHRhMjFjc2UiLCJhIjoiY201bmk5ZjVpMGJkMjJtczl6M2ZrcjI5NyJ9.Wv9lJF3oweFZuCzhCdz2rg"
+}

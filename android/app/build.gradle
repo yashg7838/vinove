@@ -30,6 +30,23 @@ android {
         versionName = flutter.versionName
     }
 
+    buildscript {
+        repositories {
+            google()
+            mavenCentral()
+            maven {
+                url 'https://api.mapbox.com/downloads/v2/releases/maven'
+                authentication {
+                    basic(BasicAuthentication)
+                }
+                credentials {
+                    username = 'yashgupta21cse'
+                    password = 'Yashnishi@123'
+                }
+            }
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

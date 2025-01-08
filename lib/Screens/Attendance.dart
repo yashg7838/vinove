@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:vinove/Screens/currentLocation.dart';
+import 'package:vinove/Screens/directions.dart';
 
 class attendance extends StatefulWidget {
   const attendance({Key? key}) : super(key: key);
@@ -583,7 +584,16 @@ class _attendanceState extends State<attendance> {
                             width: 60,
                             child: Row(
                               children: [
-                                InkWell(child: Icon(CupertinoIcons.calendar)),
+                                InkWell(
+                                    onTap: (){
+                                      Navigator.push(
+                                          context, MaterialPageRoute(
+                                        builder: (context) => directions(),
+                                      )
+                                      );
+                                    },
+                                    child: Icon(CupertinoIcons.calendar)
+                                ),
                                 SizedBox(
                                   width: 12,
                                 ),

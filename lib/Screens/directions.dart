@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-class currentLocation extends StatefulWidget {
-  const currentLocation({Key? key}) : super(key: key);
+class directions extends StatefulWidget {
+  const directions({Key? key}) : super(key: key);
 
   @override
-  State<currentLocation> createState() => _currentLocationState();
+  State<directions> createState() => _directionsState();
 }
 
-class _currentLocationState extends State<currentLocation> {
+class _directionsState extends State<directions> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Placeholder(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("TRACK LIVE LOCATION"),
+          title: Text("SEE ROUTE"),
           titleTextStyle: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
@@ -74,25 +74,26 @@ class _currentLocationState extends State<currentLocation> {
                 Expanded(
                   child: FlutterMap(
                     options: MapOptions(
-                      initialCenter: LatLng(28.56279522295112, 77.21274622499139),
+                      initialCenter: LatLng(51.5, -0.09),
                       initialZoom: 13.0,
                     ),
                     children: [
+                      // Add a TileLayer for map tiles
                       TileLayer(
                         urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                         subdomains: ['a', 'b', 'c'],
                       ),
-                      MarkerLayer(
-                        markers: [
-                          Marker(
-                            width: 80.0,
-                            height: 80.0,
-                            point: LatLng(28.56279522295112, 77.21274622499139),
-                            child: const Icon(
-                              Icons.location_pin,
-                              size: 40,
-                              color: Colors.red,
-                            ),
+                      // Add a PolylineLayer for drawing direction lines
+                      PolylineLayer(
+                        polylines: [
+                          Polyline(
+                            points: [
+                              LatLng(51.5, -0.09), // Starting point
+                              LatLng(51.505, -0.08), // Waypoint
+                              LatLng(51.51, -0.1), // Ending point
+                            ],
+                            color: Colors.blue, // Line color
+                            strokeWidth: 4.0, // Line thickness
                           ),
                         ],
                       ),
