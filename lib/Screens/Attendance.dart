@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:vinove/Screens/currentLocation.dart';
 import 'package:vinove/Screens/directions.dart';
+import 'package:vinove/Screens/searchEmployees.dart';
 
 class attendance extends StatefulWidget {
   const attendance({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _attendanceState extends State<attendance> {
         "empName" : "Wade Warren",
         "inTime" : "9:30 am",
         "outTime" : "",
-        "profileImage" : "",
+        "profileImage" : "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       },
       {
         "empID" : "WSL0034",
@@ -34,7 +35,7 @@ class _attendanceState extends State<attendance> {
         "empName" : "Cameron William",
         "inTime" : "",
         "outTime" : "",
-        "profileImage" : "",
+        "profileImage" : "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       },
       {
         "empID" : "WSL0076",
@@ -55,7 +56,7 @@ class _attendanceState extends State<attendance> {
         "empName" : "Leslie Alexander",
         "inTime" : "9:30 am",
         "outTime" : "06:40 pm",
-        "profileImage" : "",
+        "profileImage" : "https://as1.ftcdn.net/jpg/01/85/04/84/1000_F_185048418_X1kohHSgyAbPJQxPHurs4uXCTmcRSNAp.jpg",
       },
       {
         "empID" : "WSL0095",
@@ -431,45 +432,50 @@ class _attendanceState extends State<attendance> {
         body: SafeArea(
             child: Column(
               children: [
-                Container(
-                  color: Color(0xFFeaf0f6),
-                  height: 50,
-                  width: width,
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 15.0),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Color(0xFFc9c5ff),
-                              child: Icon(CupertinoIcons.group, color: Colors.white,),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 8.0),
-                              child: Text(
-                                "All Members",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500
-                                ),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => searchEmployees(),));
+                  },
+                  child: Container(
+                    color: Color(0xFFeaf0f6),
+                    height: 50,
+                    width: width,
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 15.0),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: Color(0xFFc9c5ff),
+                                child: Icon(CupertinoIcons.group, color: Colors.white,),
                               ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 15.0),
-                        child: Text(
-                          "Change",
-                          style: TextStyle(
-                            color: Color(0xFF8983f0),
-                            fontSize: 15,
+                              Padding(
+                                padding: EdgeInsets.only(left: 8.0),
+                                child: Text(
+                                  "All Members",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                      )
-                    ],
+                        Padding(
+                          padding: EdgeInsets.only(right: 15.0),
+                          child: Text(
+                            "Change",
+                            style: TextStyle(
+                              color: Color(0xFF8983f0),
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -496,8 +502,13 @@ class _attendanceState extends State<attendance> {
                         return ListTile(
                           title: Row(
                             children: [
+                              employee[index]["profileImage"] == ""?
                               CircleAvatar(
-                                backgroundColor: Colors.green,
+                                backgroundImage: NetworkImage("https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small_2x/Basic_Ui__28186_29.jpg"),
+                              )
+                                  :
+                              CircleAvatar(
+                                backgroundImage: NetworkImage(employee[index]["profileImage"]!),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),

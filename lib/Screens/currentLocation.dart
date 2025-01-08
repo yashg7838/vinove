@@ -48,7 +48,7 @@ class _currentLocationState extends State<currentLocation> {
                             Padding(
                               padding: EdgeInsets.only(left: 8.0),
                               child: Text(
-                                "All Members",
+                                "Wade Warren",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w500
@@ -58,16 +58,6 @@ class _currentLocationState extends State<currentLocation> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 15.0),
-                        child: Text(
-                          "Change",
-                          style: TextStyle(
-                            color: Color(0xFF8983f0),
-                            fontSize: 15,
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ),
